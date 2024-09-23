@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <title>Blog Posts</title>
+</head>
+<body>
+    <h1>Hello, {{ user.username }}!</h1>
+    <h2>Blog Posts</h2>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url "post_details" post.id %}">{{ post.title }}</a> - {{ user.username }}
+                <button><a href="{% url "post_edit" post.id %}">Edit</a></button>
+                <button><a href="{% url "post_delete" post.id %}">Delete</a></button>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url "post_create" %}">Create Post</a>
+    <div>
+        <a href="{% url "logout" %}">Logout</a>
+    </div>
+</body>
+</html>
